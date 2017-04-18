@@ -1,24 +1,28 @@
 function setup() {
   createCanvas(600,400);
   background(255);
-  var farbton = 196;
-  //var farbton = map(mouseX, 0, width, 0, 360);
+  //var farbton = 196;
+
 
 
   //Falls du das im draw machst anstatt in setup, so kannst du den farbton dann wohl einfach mit
   //mouseX steuern.
 
-  // Wenn ich die Variable Farbton im draw definiere stockt das Bild im browser
-  // Define colors
+
+
+  }
+
+function draw(){
+
+
+  var farbton = map(mouseX, 0, width, 0, 360);
+
   c1 = color('hsb('+farbton+',100%, 20%)');
   c2 = color('hsb('+farbton+',100%, 44%)');
   c3 = color('hsb('+farbton+',100%, 58%)');
   c4 = color('hsb('+farbton+',100%, 72%)');
   c5 = color('hsb('+farbton+',60%, 86%)');
   c6 = color('hsb('+farbton+',40%, 100%)');
-  }
-
-function draw(){
 
   noStroke();
   
