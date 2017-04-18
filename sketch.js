@@ -1,3 +1,4 @@
+//Kommentar von Christian
 //Define points
   var p1 = {
     x: 269.418,
@@ -288,7 +289,7 @@ function setup() {
   var farbton = 196;
   //var farbton = map(mouseX, 0, width, 0, 360);
 
-
+  
   
   // Define colors
   c1 = color('hsb('+farbton+',100%, 20%)');
