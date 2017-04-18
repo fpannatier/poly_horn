@@ -291,6 +291,8 @@ function setup() {
 
   //Falls du das im draw machst anstatt in setup, so kannst du den farbton dann wohl einfach mit
   //mouseX steuern.
+
+  // Wenn ich die Variable Farbton im draw definiere stockt das Bild im browser
   // Define colors
   c1 = color('hsb('+farbton+',100%, 20%)');
   c2 = color('hsb('+farbton+',100%, 44%)');
