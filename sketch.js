@@ -289,7 +289,8 @@ function setup() {
   //var farbton = map(mouseX, 0, width, 0, 360);
 
 
-  
+  //Falls du das im draw machst anstatt in setup, so kannst du den farbton dann wohl einfach mit
+  //mouseX steuern.
   // Define colors
   c1 = color('hsb('+farbton+',100%, 20%)');
   c2 = color('hsb('+farbton+',100%, 44%)');
