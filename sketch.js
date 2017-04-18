@@ -3,34 +3,39 @@ var c1, c2, c3, c4, c5, c6;
 function setup() {
   createCanvas(600, 400);
   background(255);
+
+
   var farbton = 196;
 
+  /* c1 = color('hsb(' + farbton + ',100%, 20%)');
+   c2 = color('hsb(' + farbton + ',100%, 44%)');
+   c3 = color('hsb(' + farbton + ',100%, 58%)');
+   c4 = color('hsb(' + farbton + ',100%, 72%)');
+   c5 = color('hsb(' + farbton + ',60%, 86%)');
+   c6 = color('hsb(' + farbton + ',40%, 100%)');*/
 
-  //Falls du das im draw machst anstatt in setup, so kannst du den farbton dann wohl einfach mit
-  //mouseX steuern.
+  colorMode(HSB);
+  c1 = color(farbton, 100, 20, 1);
+  c2 = color(farbton, 100, 44, 1);
+  c3 = color(farbton, 100, 58, 1);
+  c4 = color(farbton, 100, 72, 1);
+  c5 = color(farbton, 60, 86, 1);
+  c6 = color(farbton, 40, 100, 1);
 
-  c1 = color('hsb(' + farbton + ',100%, 20%)');
-  c2 = color('hsb(' + farbton + ',100%, 44%)');
-  c3 = color('hsb(' + farbton + ',100%, 58%)');
-  c4 = color('hsb(' + farbton + ',100%, 72%)');
-  c5 = color('hsb(' + farbton + ',60%, 86%)');
-  c6 = color('hsb(' + farbton + ',40%, 100%)');
+
 }
 
 
 function draw() {
 
-  farbton = map(mouseX, 0, width, 0, 255);
+  farbton = map(mouseX, 0, width, 0, 360);
 
-
-
-  c1 = color(farbton, 0, 0);
-  c2 = color(0, farbton, 0);
-  c3 = color(0, 0, farbton);
-  /* c4 = color('hsb('+farbton+',100%, 72%)');
-   c5 = color('hsb('+farbton+',60%, 86%)');
-   c6 = color('hsb('+farbton+',40%, 100%)');*/
-
+  c1 = color(farbton, 100, 20, 1);
+  c2 = color(farbton, 100, 44, 1);
+  c3 = color(farbton, 100, 58, 1);
+  c4 = color(farbton, 100, 72, 1);
+  c5 = color(farbton, 60, 86, 1);
+  c6 = color(farbton, 40, 100, 1);
 
   noStroke();
 
