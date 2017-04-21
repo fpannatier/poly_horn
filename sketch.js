@@ -28,6 +28,7 @@ function setup() {
 
 function draw() {
 
+
   farbton = map(mouseX, 0, width, 0, 360);
 
   c1 = color(farbton, 100, 20, 1);
@@ -39,6 +40,8 @@ function draw() {
 
   noStroke();
 
+
+  //matterhorn polygon
   fill(c4);
   triangle(p1.x, p1.y, p33.x, p33.y, p30.x, p30.y);
   fill(c2);
@@ -153,5 +156,36 @@ function draw() {
   triangle(p46.x, p46.y, p16.x, p16.y, p17.x, p17.y);
   fill(c3);
   triangle(p45.x, p45.y, p15.x, p15.y, p16.x, p16.y);
+
+  //matterhorn full shape
+  /*
+  fill(c1);
+  noStroke();
+  beginShape();
+  vertex(p1.x, p1.y);
+  vertex(p2.x, p2.y);
+  vertex(p3.x, p3.y);
+  vertex(p4.x, p4.y);
+  vertex(p5.x, p5.y);
+  vertex(p6.x, p6.y);
+  vertex(p7.x, p7.y);
+  vertex(p8.x, p8.y);
+  vertex(p9.x, p9.y);
+  vertex(p10.x, p10.y);
+  vertex(p11.x, p11.y);
+  vertex(p12.x, p12.y);
+  vertex(p13.x, p13.y);
+  vertex(p14.x, p14.y);
+  vertex(p22.x, p22.y);
+  vertex(p23.x, p23.y);
+  vertex(p24.x, p24.y);
+  vertex(p25.x, p25.y);
+  vertex(p26.x, p26.y);
+  vertex(p27.x, p27.y);
+  vertex(p28.x, p28.y);
+  vertex(p29.x, p29.y);
+  vertex(p30.x, p30.y);
+  endShape(CLOSE);
+  */
 
 }
