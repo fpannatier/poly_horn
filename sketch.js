@@ -28,8 +28,8 @@ function setup() {
 
 function draw() {
 
-
-  farbton = map(mouseX, 0, width, 0, 360);
+  farbton = 196;
+  //farbton = map(mouseX, 0, width, 0, 360);
 
   c1 = color(farbton, 100, 20, 1);
   c2 = color(farbton, 100, 44, 1);
@@ -45,13 +45,15 @@ function draw() {
 
   for (var i = 0; i < triangles.length; i++) {
     var t = triangles[i];
+    var c = t[3];
     stroke(1);
-    fill('red');
+    //fill(c);
     beginShape(TRIANGLES);
     vertex(t[0].x, t[0].y);
     vertex(t[1].x, t[1].y);
     vertex(t[2].x, t[2].y);
     endShape();
   }
+
 
 }
