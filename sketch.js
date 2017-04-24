@@ -46,7 +46,8 @@ function draw() {
   for (var i = 0; i < triangles.length; i++) {
     var t = triangles[i];
     var c = t[3];
-    stroke(1);
+    stroke(0);
+    strokeWeight(0.2);
     //fill(c);
     beginShape(TRIANGLES);
     vertex(t[0].x, t[0].y);
