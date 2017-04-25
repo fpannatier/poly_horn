@@ -1,5 +1,26 @@
 var c1, c2, c3, c4, c5, c6;
 
+//s = saturation, l = lightness
+var colors = [{
+  s: 20,
+  l: 20
+} {
+  s: 100,
+  l: 44
+}, {
+  s: 100,
+  l: 58
+}, {
+  s: 100,
+  l: 72
+}, {
+  s: 60,
+  l: 86
+}, {
+  s: 40,
+  l: 100
+}];
+
 function setup() {
   createCanvas(600, 400);
   background(255);
@@ -45,10 +66,10 @@ function draw() {
 
   for (var i = 0; i < triangles.length; i++) {
     var t = triangles[i];
-    var c = t[3];
+    //var c = t[3];
     stroke(0);
     strokeWeight(0.2);
-    //fill(c);
+    fill(c);
     beginShape(TRIANGLES);
     vertex(t[0].x, t[0].y);
     vertex(t[1].x, t[1].y);
