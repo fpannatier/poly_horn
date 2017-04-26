@@ -88,10 +88,11 @@ function draw() {
     var t = triangles[i];
     //var c = t[3];
     var c = colors[i];
-    
+
     var currColor = color(c.h, c.s, c.l, 1);
-    stroke(0);
-    strokeWeight(0.2);
+    //stroke(0);
+    //strokeWeight(0.2);
+    noStroke();
     fill(currColor);
     beginShape(TRIANGLES);
     vertex(t[0].x, t[0].y);
