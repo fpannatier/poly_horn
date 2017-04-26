@@ -1,30 +1,40 @@
 var farbton = 196;
 //h = hue, s = saturation, l = brightness
-var colors = [{
+
+var c1 = {
   h: farbton,
   s: 20,
   l: 20
-}, {
-  h: farbton,
-  s: 100,
-  l: 44
-}, {
+};
+
+var c2 = {
   h: farbton,
   s: 100,
   l: 58
-}, {
+};
+
+var c3 = {
   h: farbton,
   s: 100,
   l: 72
-}, {
+};
+
+var c4 =  {
   h: farbton,
   s: 60,
   l: 86
-}, {
+};
+
+
+var c5 = {
   h: farbton,
   s: 40,
   l: 100
-}];
+};
+
+
+//hier kannst du die farben per triangle setzen
+var colors = [c1, c2, c3, c4, c5,c1, c2, c3, c4, c5,c1, c2, c3, c4, c5,c1, c2, c3, c4, c5,c1, c2, c3, c4, c5,c1, c2, c3, c4, c5,c1, c2, c3, c4, c5,c1, c2, c3, c4, c5,c1, c2, c3, c4, c5,c1, c2, c3, c4, c5,c1, c2, c3, c4, c5,c1, c2, c3, c4, c5,c1];
 
 function setup() {
   createCanvas(600, 400);
@@ -79,10 +89,6 @@ function draw() {
     //var c = t[3];
     var c = colors[i];
     
-    //workaround, wenn das color array fertig ist, einfach die erste farbe nehmen
-    if(c == null){
-      c = colors[0];
-    }
     var currColor = color(c.h, c.s, c.l, 1);
     stroke(0);
     strokeWeight(0.2);
