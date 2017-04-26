@@ -1,11 +1,47 @@
-var c1, c2, c3, c4, c5, c6;
+var farbton = 196;
+//h = hue, s = saturation, l = brightness
+
+var c1 = {
+  h: farbton,
+  s: 20,
+  l: 20
+};
+
+var c2 = {
+  h: farbton,
+  s: 100,
+  l: 58
+};
+
+var c3 = {
+  h: farbton,
+  s: 100,
+  l: 72
+};
+
+var c4 =  {
+  h: farbton,
+  s: 60,
+  l: 86
+};
+
+
+var c5 = {
+  h: farbton,
+  s: 40,
+  l: 100
+};
+
+
+//hier kannst du die farben per triangle setzen
+var colors = [c1, c2, c3, c4, c5,c1, c2, c3, c4, c5,c1, c2, c3, c4, c5,c1, c2, c3, c4, c5,c1, c2, c3, c4, c5,c1, c2, c3, c4, c5,c1, c2, c3, c4, c5,c1, c2, c3, c4, c5,c1, c2, c3, c4, c5,c1, c2, c3, c4, c5,c1, c2, c3, c4, c5,c1, c2, c3, c4, c5,c1];
 
 function setup() {
   createCanvas(600, 400);
   background(255);
 
 
-  var farbton = 196;
+
 
   /* c1 = color('hsb(' + farbton + ',100%, 20%)');
    c2 = color('hsb(' + farbton + ',100%, 44%)');
@@ -15,20 +51,22 @@ function setup() {
    c6 = color('hsb(' + farbton + ',40%, 100%)');*/
 
   colorMode(HSB);
-  c1 = color(farbton, 100, 20, 1);
+  /*c1 = color(farbton, 100, 20, 1);
   c2 = color(farbton, 100, 44, 1);
   c3 = color(farbton, 100, 58, 1);
   c4 = color(farbton, 100, 72, 1);
   c5 = color(farbton, 60, 86, 1);
-  c6 = color(farbton, 40, 100, 1);
+  c6 = color(farbton, 40, 100, 1);*/
 
+
+console.log(colors.length, triangles.length);
 
 }
 
 
 function draw() {
 
-
+  farbton = 196;
   farbton = map(mouseX, 0, width, 0, 360);
 
   c1 = color(farbton, 100, 20, 1);
@@ -40,152 +78,28 @@ function draw() {
 
   noStroke();
 
+  //den aktuellen farbton bei allen farben setzen
+  for (var i = 0; i < colors.length; i++) {
+    colors[i].h = farbton;
+  }
 
-  //matterhorn polygon
-  fill(c4);
-  triangle(p1.x, p1.y, p33.x, p33.y, p30.x, p30.y);
-  fill(c2);
-  triangle(p1.x, p1.y, p31.x, p31.y, p33.x, p33.y);
-  fill(c3);
-  triangle(p1.x, p1.y, p2.x, p2.y, p5.x, p5.y);
-  fill(c6);
-  triangle(p30.x, p30.y, p33.x, p33.y, p32.x, p32.y);
-  fill(c1);
-  triangle(p31.x, p31.y, p5.x, p5.y, p33.x, p33.y);
-  fill(c1);
-  triangle(p3.x, p3.y, p4.x, p4.y, p5.x, p5.y);
-  fill(c4);
-  triangle(p30.x, p30.y, p32.x, p32.y, p29.x, p29.y);
-  fill(c5);
-  quad(p29.x, p29.y, p33.x, p33.y, p27.x, p27.y, p28.x, p28.y);
-  fill(c6);
-  triangle(p26.x, p26.y, p27.x, p27.y, p35.x, p35.y);
-  fill(c4);
-  triangle(p27.x, p27.y, p34.x, p34.y, p35.x, p35.y);
-  fill(c6);
-  triangle(p34.x, p34.y, p33.x, p33.y, p35.x, p35.y);
-  fill(c1);
-  triangle(p33.x, p33.y, p40.x, p40.y, p35.x, p35.y);
-  fill(c2);
-  triangle(p33.x, p33.y, p5.x, p5.y, p40.x, p40.y);
-  fill(c1);
-  triangle(p5.x, p5.y, p6.x, p6.y, p40.x, p40.y);
-  fill(c4);
-  triangle(p26.x, p26.y, p35.x, p35.y, p25.x, p25.y);
-  fill(c5);
-  triangle(p25.x, p25.y, p35.x, p35.y, p36.x, p36.y);
-  fill(c6);
-  triangle(p25.x, p25.y, p36.x, p36.y, p24.x, p24.y);
-  fill(c4);
-  triangle(p35.x, p35.y, p38.x, p38.y, p36.x, p36.y);
-  fill(c6);
-  triangle(p35.x, p35.y, p37.x, p37.y, p38.x, p38.y);
-  fill(c2);
-  triangle(p35.x, p35.y, p40.x, p40.y, p37.x, p37.y);
-  fill(c2);
-  triangle(p6.x, p6.y, p7.x, p7.y, p40.x, p40.y);
-  fill(c1);
-  triangle(p7.x, p7.y, p8.x, p8.y, p9.x, p9.y);
-  fill(c1);
-  triangle(p9.x, p9.y, p10.x, p10.y, p41.x, p41.y);
-  fill(c2);
-  triangle(p7.x, p7.y, p9.x, p9.y, p41.x, p41.y);
-  fill(c5);
-  triangle(p24.x, p24.y, p36.x, p36.y, p21.x, p21.y);
-  fill(c1);
-  triangle(p37.x, p37.y, p40.x, p40.y, p47.x, p47.y);
-  fill(c3);
-  triangle(p7.x, p7.y, p48.x, p48.y, p40.x, p40.y);
-  fill(c4);
-  quad(p7.x, p7.y, p46.x, p46.y, p47.x, p47.y, p48.x, p48.y);
-  fill(c1);
-  triangle(p7.x, p7.y, p55.x, p55.y, p46.x, p46.y);
-  fill(c3);
-  triangle(p7.x, p7.y, p41.x, p41.y, p55.x, p55.y);
-  fill(c4);
-  triangle(p24.x, p24.y, p54.x, p54.y, p23.x, p23.y);
-  fill(c6);
-  triangle(p36.x, p36.y, p38.x, p38.y, p21.x, p21.y);
-  fill(c3);
-  triangle(p23.x, p23.y, p54.x, p54.y, p21.x, p21.y);
-  fill(c2);
-  triangle(p23.x, p23.y, p21.x, p21.y, p22.x, p22.y);
-  fill(c5);
-  triangle(p37.x, p37.y, p20.x, p20.y, p38.x, p38.y);
-  fill(c1);
-  triangle(p37.x, p37.y, p50.x, p50.y, p39.x, p39.y);
-  fill(c2);
-  triangle(p37.x, p37.y, p47.x, p47.y, p50.x, p50.y);
-  fill(c3);
-  triangle(p39.x, p39.y, p49.x, p49.y, p51.x, p51.y);
-  fill(c1);
-  triangle(p39.x, p39.y, p51.x, p51.y, p52.x, p52.y);
-  fill(c2);
-  triangle(p10.x, p10.y, p11.x, p11.y, p41.x, p41.y);
-  fill(c2);
-  triangle(p11.x, p11.y, p12.x, p12.y, p43.x, p43.y);
-  fill(c1);
-  quad(p11.x, p11.y, p56.x, p56.y, p16.x, p16.y, p41.x, p41.y);
-  fill(c3);
-  triangle(p11.x, p11.y, p43.x, p43.y, p56.x, p56.y);
-  fill(c3);
-  triangle(p12.x, p12.y, p13.x, p13.y, p42.x, p42.y);
-  fill(c1);
-  triangle(p42.x, p42.y, p44.x, p44.y, p43.x, p43.y);
-  fill(c5);
-  triangle(p42.x, p42.y, p14.x, p14.y, p44.x, p44.y);
-  fill(c2);
-  triangle(p56.x, p56.y, p43.x, p43.y, p16.x, p16.y);
-  fill(c3);
-  triangle(p45.x, p45.y, p43.x, p43.y, p44.x, p44.y);
-  fill(c1);
-  triangle(p49.x, p49.y, p47.x, p47.y, p17.x, p17.y);
-  fill(c4);
-  triangle(p38.x, p38.y, p20.x, p20.y, p53.x, p53.y);
-  fill(c1);
-  triangle(p45.x, p45.y, p14.x, p14.y, p15.x, p15.y);
-  fill(c6);
-  triangle(p39.x, p39.y, p19.x, p19.y, p20.x, p20.y);
-  fill(c2);
-  quad(p39.x, p39.y, p52.x, p52.y, p18.x, p18.y, p19.x, p19.y);
-  fill(c3);
-  triangle(p53.x, p53.y, p20.x, p20.y, p21.x, p21.y);
-  fill(c2);
-  triangle(p49.x, p49.y, p17.x, p17.y, p18.x, p18.y);
-  fill(c3);
-  triangle(p46.x, p46.y, p16.x, p16.y, p17.x, p17.y);
-  fill(c3);
-  triangle(p45.x, p45.y, p15.x, p15.y, p16.x, p16.y);
 
-  //matterhorn full shape
-  /*
-  fill(c1);
-  noStroke();
-  beginShape();
-  vertex(p1.x, p1.y);
-  vertex(p2.x, p2.y);
-  vertex(p3.x, p3.y);
-  vertex(p4.x, p4.y);
-  vertex(p5.x, p5.y);
-  vertex(p6.x, p6.y);
-  vertex(p7.x, p7.y);
-  vertex(p8.x, p8.y);
-  vertex(p9.x, p9.y);
-  vertex(p10.x, p10.y);
-  vertex(p11.x, p11.y);
-  vertex(p12.x, p12.y);
-  vertex(p13.x, p13.y);
-  vertex(p14.x, p14.y);
-  vertex(p22.x, p22.y);
-  vertex(p23.x, p23.y);
-  vertex(p24.x, p24.y);
-  vertex(p25.x, p25.y);
-  vertex(p26.x, p26.y);
-  vertex(p27.x, p27.y);
-  vertex(p28.x, p28.y);
-  vertex(p29.x, p29.y);
-  vertex(p30.x, p30.y);
-  endShape(CLOSE);
-  */
+  for (var i = 0; i < triangles.length; i++) {
+    var t = triangles[i];
+    //var c = t[3];
+    var c = colors[i];
+
+    var currColor = color(c.h, c.s, c.l, 1);
+    //stroke(0);
+    //strokeWeight(0.2);
+    noStroke();
+    fill(currColor);
+    beginShape(TRIANGLES);
+    vertex(t[0].x, t[0].y);
+    vertex(t[1].x, t[1].y);
+    vertex(t[2].x, t[2].y);
+    endShape();
+  }
+
 
 }
