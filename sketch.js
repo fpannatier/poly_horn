@@ -34,7 +34,7 @@ var c5 = {
 
 
 //hier kannst du die farben per triangle setzen
-var colors = [c1, c2, c3, c4, c5,c1, c2, c3, c4, c5,c1, c2, c3, c4, c5,c1, c2, c3, c4, c5,c1, c2, c3, c4, c5,c1, c2, c3, c4, c5,c1, c2, c3, c4, c5,c1, c2, c3, c4, c5,c1, c2, c3, c4, c5,c1, c2, c3, c4, c5,c1, c2, c3, c4, c5,c1, c2, c3, c4, c5,c1];
+var colors = [c3, c3, c2, c1, c1, c5, c3, c4, c4, c5, c3, c5, c1, c2, c3, c4, c5, c1, c3, c4, c5, c2, c5, c2, c4, c1, c2, c1, c2, c3, c1, c3, c3, c2, c1, c2, c1, c2, c2, c2, c1, c1, c2, c4, c1, c2, c2, c2, c1, c5, c2, c2, c1, c3, c2, c1, c3, c2, c1, c2, c2];
 
 function setup() {
   createCanvas(600, 400);
@@ -75,6 +75,7 @@ function draw() {
   c4 = color(farbton, 100, 72, 1);
   c5 = color(farbton, 60, 86, 1);
   c6 = color(farbton, 40, 100, 1);
+
 
   noStroke();
 
