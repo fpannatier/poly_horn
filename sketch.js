@@ -1,3 +1,15 @@
+//snow variables
+var quantity = 100;
+var xPosition = [];
+var yPosition = [];
+var flakeSize = [];
+var direction = [];
+var minFlakeSize = 1;
+var maxFlakeSize = 5;
+var snowColor = 255;
+
+//mountain variables
+
 var farbton = 196;
 //h = hue, s = saturation, l = brightness
 
@@ -40,6 +52,16 @@ function setup() {
   createCanvas(600, 400);
   background(255);
 
+//snow setup
+  frameRate(25);
+  noStroke();
+
+  for(var i = 0; i < quantity; i++) {
+    flakeSize[i] = round(random(minFlakeSize, maxFlakeSize));
+    xPosition[i] = random(0, width);
+    yPosition[i] = random(0, height);
+    direction[i] = round(random(0, 1));
+  }
 
 
 
@@ -66,6 +88,9 @@ console.log(colors.length, triangles.length);
 
 function draw() {
 
+
+
+
   farbton = 196;
   farbton = map(mouseX, 0, width, 0, 360);
 
@@ -75,6 +100,9 @@ function draw() {
   c4 = color(farbton, 100, 72, 1);
   c5 = color(farbton, 60, 86, 1);
   c6 = color(farbton, 40, 100, 1);
+  c7 = color(farbton, 30, 50, 1);
+
+    background(c7);
 
 
   noStroke();
@@ -101,6 +129,30 @@ function draw() {
     vertex(t[2].x, t[2].y);
     endShape();
   }
+  //snow draw
+
+    drawSnow();
 
 
+}
+
+function drawSnow() {
+	for(var i = 0; i < xPosition.length; i++) {
+    noStroke();
+    fill(255);
+    ellipse(xPosition[i], yPosition[i], flakeSize[i], flakeSize[i]);
+
+    if(direction[i] == 0) {
+      xPosition[i] += map(flakeSize[i], minFlakeSize, maxFlakeSize, .1, .5);
+    } else {
+      xPosition[i] -= map(flakeSize[i], minFlakeSize, maxFlakeSize, .1, .5);
+    }
+
+    yPosition[i] += flakeSize[i] + direction[i];
+
+    if(xPosition[i] > width + flakeSize[i] || xPosition[i] < -flakeSize[i] || yPosition[i] > height + flakeSize[i]) {
+      xPosition[i] = random(0, width);
+      yPosition[i] = -flakeSize[i];
+    }
+  }
 }
