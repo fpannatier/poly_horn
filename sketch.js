@@ -100,7 +100,7 @@ function draw() {
   c4 = color(farbton, 100, 72, 1);
   c5 = color(farbton, 60, 86, 1);
   c6 = color(farbton, 40, 100, 1);
-  c7 = color(farbton, 30, 50, 1);
+  c7 = color(farbton, 50, 90, 1);
 
     background(c7);
 
