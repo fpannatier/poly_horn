@@ -1,11 +1,11 @@
 //snow variables
-var quantity = 100;
+var quantity = 200;
 var xPosition = [];
 var yPosition = [];
 var flakeSize = [];
 var direction = [];
 var minFlakeSize = 1;
-var maxFlakeSize = 5;
+var maxFlakeSize = 7;
 var snowColor = 255;
 
 //mountain variables
@@ -140,12 +140,21 @@ function drawSnow() {
 	for(var i = 0; i < xPosition.length; i++) {
     noStroke();
     fill(255);
-    ellipse(xPosition[i], yPosition[i], flakeSize[i], flakeSize[i]);
+    //ellipse(xPosition[i], yPosition[i], flakeSize[i], flakeSize[i]);
+    push();
+    translate(xPosition[i],yPosition[i]);
+    rotate(radians(frameCount));
+    beginShape();
+    vertex(0,0);
+    vertex(flakeSize[i],0);
+    vertex(flakeSize[i]/2,flakeSize[i]*0.86604);
+    endShape(CLOSE);
+    pop();
 
     if(direction[i] == 0) {
-      xPosition[i] += map(flakeSize[i], minFlakeSize, maxFlakeSize, .1, .5);
+      xPosition[i] += map(flakeSize[i], minFlakeSize, maxFlakeSize, .1, .7);
     } else {
-      xPosition[i] -= map(flakeSize[i], minFlakeSize, maxFlakeSize, .1, .5);
+      xPosition[i] -= map(flakeSize[i], minFlakeSize, maxFlakeSize, .1, .7);
     }
 
     yPosition[i] += flakeSize[i] + direction[i];
