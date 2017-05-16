@@ -4,6 +4,7 @@ var xPosition = [];
 var yPosition = [];
 var flakeSize = [];
 var direction = [];
+var rotation = [];
 var minFlakeSize = 1;
 var maxFlakeSize = 7;
 var snowColor = 255;
@@ -61,6 +62,8 @@ function setup() {
     xPosition[i] = random(0, width);
     yPosition[i] = random(0, height);
     direction[i] = round(random(0, 1));
+    rotation[i] = random(0,360);
+    
   }
 
 
@@ -143,7 +146,7 @@ function drawSnow() {
     //ellipse(xPosition[i], yPosition[i], flakeSize[i], flakeSize[i]);
     push();
     translate(xPosition[i],yPosition[i]);
-    rotate(radians(frameCount));
+    rotate(radians(rotation[i]));
     beginShape();
     vertex(0,0);
     vertex(flakeSize[i],0);
