@@ -1,12 +1,12 @@
 //snow variables
-var quantity = 200;
+var quantity = 1500;
 var xPosition = [];
 var yPosition = [];
 var flakeSize = [];
 var direction = [];
 var rotation = [];
-var minFlakeSize = 1;
-var maxFlakeSize = 7;
+var minFlakeSize = 2;
+var maxFlakeSize = 4;
 var snowColor = 255;
 
 //mountain variables
@@ -49,7 +49,7 @@ var c5 = {
 //hier kannst du die farben per triangle setzen
 var colors = [c3, c3, c2, c1, c1, c5, c3, c4, c4, c5, c3, c5, c1, c2, c3, c4, c5, c1, c3, c4, c5, c2, c5, c2, c4, c1, c2, c1, c2, c3, c1, c3, c3, c2, c1, c2, c1, c2, c2, c2, c1, c1, c2, c4, c1, c2, c2, c2, c1, c5, c2, c2, c1, c3, c2, c1, c3, c2, c1, c2, c2];
 var colorsRo = [c2, c1, c3, c5, c3, c4, c5, c2, c2, c4, c3, c2, c4, c1, c2, c4, c5, c1, c2, c1, c2, c1, c5, c2, c1, c2, c2, c4, c3, c5, c1, c5, c4, c3, c5, c3, c4, c1, c1, c4, c3, c2, c4, c4, c4, c1, c2, c5, c4, c5, c4, c5, c4, c1, c2, c3, c1, c2, c3, c4, c3, c2, c1, c2];
-var colorsGo = [c1, c2, c3, c2, c1, c3, c3, c3, c2, c4, c3, c5, c1, c2, c1, c5, c4, c5, c4, c4, c3, c3, c4, c5, c3, c2, c1, c5, c4, c5, c3, c4, c5, c4, c5, c4, c2, c1, c4, c1, c2, c2, c5, c1, c2, c1, c4, c3, c3, c4, c4, c5, c4, c3, c5, c1, c5, c2, c2, c1, c3, c5, c4, c2, c2, c4, c5, c4, c1, c2, c4, c3, c4, c2, c3, c1, c1, c1, c2, c3, c2, c3, c5, c4, c3, c5, c2, c2, c1, c2, c1, c2];
+var colorsGo = [c1, c2, c3, c2, c1, c3, c3, c3, c2, c4, c3, c5, c1, c2, c1, c5, c4, c5, c4, c4, c3, c3, c4, c5, c3, c2, c1, c5, c4, c5, c3, c4, c5, c4, c5, c4, c2, c1, c4, c2, c1, c2, c5, c1, c2, c1, c4, c3, c3, c4, c4, c5, c4, c3, c5, c1, c5, c2, c2, c1, c3, c5, c4, c2, c2, c4, c5, c4, c1, c2, c4, c3, c4, c2, c3, c1, c1, c1, c2, c3, c2, c3, c5, c4, c3, c5, c2, c2, c1, c2, c1, c2];
 function setup() {
   createCanvas(600, 400);
   background(255);
@@ -63,7 +63,7 @@ function setup() {
     xPosition[i] = random(0, width);
     yPosition[i] = random(0, height);
     direction[i] = round(random(0, 1));
-    rotation[i] = random(0,360);
+    rotation[i] = 180;
 
   }
 
@@ -106,7 +106,7 @@ function draw() {
   c6 = color(farbton, 40, 100, 1);
   c7 = color(farbton, 50, 90, 1);
 
-    background(c7);
+    background(255);
 
 
   noStroke();
@@ -143,7 +143,7 @@ function draw() {
 function drawSnow() {
 	for(var i = 0; i < xPosition.length; i++) {
     noStroke();
-    fill(255);
+    fill('lightblue');
     //ellipse(xPosition[i], yPosition[i], flakeSize[i], flakeSize[i]);
     push();
     translate(xPosition[i],yPosition[i]);
@@ -161,7 +161,7 @@ function drawSnow() {
       xPosition[i] -= map(flakeSize[i], minFlakeSize, maxFlakeSize, .1, .7);
     }
 
-    yPosition[i] += flakeSize[i] + direction[i];
+    yPosition[i] += flakeSize[i] + direction[i]+5;
 
     if(xPosition[i] > width + flakeSize[i] || xPosition[i] < -flakeSize[i] || yPosition[i] > height + flakeSize[i]) {
       xPosition[i] = random(0, width);

@@ -1087,7 +1087,7 @@
     [go13,go18,go16],
     [go11,go72,go17],
     [go72,go17,go18],
-    [go17,go72,go19],
+    [go17,go18,go19],
     [go15,go19,go20],
     [go11,go58,go19],
     [go20,go19,go21],
