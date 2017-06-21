@@ -48,7 +48,8 @@ var c5 = {
 
 //hier kannst du die farben per triangle setzen
 var colors = [c3, c3, c2, c1, c1, c5, c3, c4, c4, c5, c3, c5, c1, c2, c3, c4, c5, c1, c3, c4, c5, c2, c5, c2, c4, c1, c2, c1, c2, c3, c1, c3, c3, c2, c1, c2, c1, c2, c2, c2, c1, c1, c2, c4, c1, c2, c2, c2, c1, c5, c2, c2, c1, c3, c2, c1, c3, c2, c1, c2, c2];
-
+var colorsRo = [c2, c1, c3, c5, c3, c4, c5, c2, c2, c4, c3, c2, c4, c1, c2, c4, c5, c1, c2, c1, c2, c1, c5, c2, c1, c2, c2, c4, c3, c5, c1, c5, c4, c3, c5, c3, c4, c1, c1, c4, c3, c2, c4, c4, c4, c1, c2, c5, c4, c5, c4, c5, c4, c1, c2, c3, c1, c2, c3, c4, c3, c2, c1, c2];
+var colorsGo = [c1, c2, c3, c2, c1, c3, c3, c3, c2, c4, c3, c5, c1, c2, c1, c5, c4, c5, c4, c4, c3, c3, c4, c5, c3, c2, c1, c5, c4, c5, c3, c4, c5, c4, c5, c4, c2, c1, c4, c1, c2, c2, c5, c1, c2, c1, c4, c3, c3, c4, c4, c5, c4, c3, c5, c1, c5, c2, c2, c1, c3, c5, c4, c2, c2, c4, c5, c4, c1, c2, c4, c3, c4, c2, c3, c1, c1, c1, c2, c3, c2, c3, c5, c4, c3, c5, c2, c2, c1, c2, c1, c2];
 function setup() {
   createCanvas(600, 400);
   background(255);
@@ -63,7 +64,7 @@ function setup() {
     yPosition[i] = random(0, height);
     direction[i] = round(random(0, 1));
     rotation[i] = random(0,360);
-    
+
   }
 
 
@@ -116,10 +117,10 @@ function draw() {
   }
 
 
-  for (var i = 0; i < triangles.length; i++) {
-    var t = triangles[i];
+  for (var i = 0; i < trianglesGo.length; i++) {
+    var t = trianglesGo[i];
     //var c = t[3];
-    var c = colors[i];
+    var c = colorsGo[i];
 
     var currColor = color(c.h, c.s, c.l, 1);
     //stroke(0);
