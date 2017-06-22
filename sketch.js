@@ -96,7 +96,7 @@ function draw() {
 
 
   farbton = 196;
-  farbton = map(mouseX, 0, width, 0, 360);
+//  farbton = map(mouseX, 0, width, 0, 360);
 
   c1 = color(farbton, 100, 20, 1);
   c2 = color(farbton, 100, 44, 1);
@@ -143,7 +143,7 @@ function draw() {
 function drawSnow() {
 	for(var i = 0; i < xPosition.length; i++) {
     noStroke();
-    fill('lightblue');
+    fill(c5);
     //ellipse(xPosition[i], yPosition[i], flakeSize[i], flakeSize[i]);
     push();
     translate(xPosition[i],yPosition[i]);
