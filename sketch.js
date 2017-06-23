@@ -121,15 +121,15 @@ function draw() {
   noStroke();
 
   //den aktuellen farbton bei allen farben setzen
-  for (var i = 0; i < colors.length; i++) {
-    colors[i].h = farbton;
+  for (var i = 0; i < colorsGo.length; i++) {
+    colorsGo[i].h = farbton;
   }
 
 
-  for (var i = 0; i < triangles.length; i++) {
-    var t = triangles[i];
+  for (var i = 0; i < trianglesGo.length; i++) {
+    var t = trianglesGo[i];
     //var c = t[3];
-    var c = colors[i];
+    var c = colorsGo[i];
 
     var currColor = color(c.h, c.s, c.l, 1);
     //stroke(0);
