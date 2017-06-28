@@ -58,6 +58,32 @@ var colorsRo = [c2, c1, c3, c5, c3, c4, c5, c2, c2, c4, c3, c2, c4, c1, c2, c4, 
 var colorsGo = [c1, c2, c3, c2, c1, c3, c3, c3, c2, c4, c3, c5, c1, c2, c1, c5, c4, c5, c4, c4, c3, c3, c4, c5, c3, c2, c1, c5, c4, c5, c3, c4, c5, c4, c5, c4, c2, c1, c4, c2, c1, c2, c5, c1, c2, c1, c4, c3, c3, c4, c4, c5, c4, c3, c5, c1, c5, c2, c2, c1, c3, c5, c4, c2, c2, c4, c5, c4, c1, c2, c4, c3, c4, c2, c3, c1, c1, c1, c2, c3, c2, c3, c5, c4, c3, c5, c2, c2, c1, c2, c1, c2];
 var colorsKl = [c2, c1, c5, c2, c3, c4, c5, c4, c1, c5, c1, c2, c3, c1, c4, c3, c1, c2, c3, c2, c1, c3, c2, c1, c3, c3, c2, c5, c3, c1, c2, c2, c2, c2, c1, c2, c3, c1, c5, c4, c3, c4, c5, c2, c3, c2, c3, c3, c3, c2, c1, c2, c3, c1, c2, c3, c1, c3, c5, c5, c1, c2, c3, c3, c4, c5, c4, c3, c5, c3, c4, c5];
 
+var ro = {
+  triangles: trianglesRo,
+  colors: colorsRo
+};
+
+var kl = {
+  triangles: trianglesKl,
+  colors: colorsKl
+};
+
+var go = {
+  triangles: trianglesGo,
+  colors: colorsGo
+};
+
+//trianglesDo scheint es nicht zu geben
+/*
+var dol = {
+  triangles: trianglesDo,
+  colors: colorsDo
+};*/
+
+var perspectives = [ro, kl, go];
+
+//hier kannst du die entsprechende perspektive setzen
+var perspIndex = 0;
 
 function setup() {
   createCanvas(600, 400);
@@ -120,16 +146,20 @@ function draw() {
 
   noStroke();
 
+  var perspective = perspectives[perspIndex];
+  var colors = perspective.colors;
+  var triangles = perspective.triangles;
+
   //den aktuellen farbton bei allen farben setzen
-  for (var i = 0; i < colorsGo.length; i++) {
-    colorsGo[i].h = farbton;
+  for (var i = 0; i < colors.length; i++) {
+    colors[i].h = farbton;
   }
 
 
-  for (var i = 0; i < trianglesGo.length; i++) {
-    var t = trianglesGo[i];
+  for (var i = 0; i < triangles.length; i++) {
+    var t = triangles[i];
     //var c = t[3];
-    var c = colorsGo[i];
+    var c = colors[i];
 
     var currColor = color(c.h, c.s, c.l, 1);
     //stroke(0);
