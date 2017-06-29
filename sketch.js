@@ -8,6 +8,11 @@ var rotation = [];
 var minFlakeSize = 1;
 var maxFlakeSize = 7;
 var snowColor = 255;
+var buttonVi;
+var buttonRo;
+var buttonGo;
+var buttonKl;
+
 
 //mountain variables
 
@@ -81,11 +86,19 @@ var vi = {
 var perspectives = [vi, ro, go, kl];
 
 //hier kannst du die entsprechende perspektive setzen
-var perspIndex = 3;
+var perspIndex = 0;
 
 function setup() {
   createCanvas(600, 400);
   background(255);
+  buttonVi = createButton('Zermatt');
+  buttonRo = createButton('Rothorn');
+  buttonGo = createButton('Gornergrat');
+  buttonKl = createButton('Klein Matterhorn');
+/*  buttonVi.mousePressed(zermatt);
+  buttonRo.mousePressed(rothorn);
+  buttonGo.mousePressed(gornergrat);
+  buttonKl.mousePressed(klMatterhorn) */
 
 //snow setup
   frameRate(25);
@@ -118,7 +131,7 @@ function setup() {
   c6 = color(farbton, 40, 100, 1);*/
 
 
-//console.log(colorsVi.length, trianglesVi.length);
+//console.log(view);
 
 }
 
