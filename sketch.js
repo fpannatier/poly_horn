@@ -1,5 +1,5 @@
 //snow variables
-var snowQuantity = 400
+var snowQuantity = 400;
 var xPosition = [];
 var yPosition = [];
 var flakeSize = [];
@@ -9,6 +9,12 @@ var minFlakeSize = 1;
 var maxFlakeSize = 7;
 var snowColor = 255;
 
+//rain variables
+var dropSize = [];
+var rainQuantity = 1000;
+var minDropSize = 2;
+var maxDropSize = 4;
+var rainColor = 255;
 //mountain variables
 
 var farbton = 196;
@@ -87,8 +93,16 @@ function setup() {
     yPosition[i] = random(0, height);
     direction[i] = round(random(0, 1));
      rotation[i] = random(0,360);
-
   }
+
+  //rain setup
+  for(var i = 0; i < rainQuantity; i++) {
+    dropSize[i] = round(random(minDropSize, maxDropSize));
+    xPosition[i] = random(0, width);
+    yPosition[i] = random(0, height);
+    direction[i] = round(random(0, 1));
+    rotation[i] = 180;
+}
 
 
 
@@ -159,9 +173,10 @@ function draw() {
     endShape();
   }
   //snow draw
-
     drawSnow();
 
+//rain draw
+    drawRain();
 
 }
 
@@ -191,6 +206,36 @@ function drawSnow() {
     if(xPosition[i] > width + flakeSize[i] || xPosition[i] < -flakeSize[i] || yPosition[i] > height + flakeSize[i]) {
       xPosition[i] = random(0, width);
       yPosition[i] = -flakeSize[i];
+    }
+  }
+}
+
+function drawRain() {
+  for(var i = 0; i < xPosition.length; i++) {
+    noStroke();
+    fill(c5);
+    //ellipse(xPosition[i], yPosition[i], dropSize[i], dropSize[i]);
+    push();
+    translate(xPosition[i],yPosition[i]);
+    rotate(radians(rotation[i]));
+    beginShape();
+    vertex(0,0);
+    vertex(dropSize[i],0);
+    vertex(dropSize[i]/2,dropSize[i]*0.86604);
+    endShape(CLOSE);
+    pop();
+
+    if(direction[i] == 0) {
+      xPosition[i] += map(dropSize[i], minDropSize, maxDropSize, .1, .7);
+    } else {
+      xPosition[i] -= map(dropSize[i], minDropSize, maxDropSize, .1, .7);
+    }
+
+    yPosition[i] += dropSize[i] + direction[i]+5;
+
+    if(xPosition[i] > width + dropSize[i] || xPosition[i] < -dropSize[i] || yPosition[i] > height + dropSize[i]) {
+      xPosition[i] = random(0, width);
+      yPosition[i] = -dropSize[i];
     }
   }
 }
