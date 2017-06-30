@@ -1,12 +1,12 @@
 //snow variables
-var quantity = 1500;
+var quantity = 1000;
 var xPosition = [];
 var yPosition = [];
-var flakeSize = [];
+var dropSize = [];
 var direction = [];
 var rotation = [];
-var minFlakeSize = 2;
-var maxFlakeSize = 4;
+var minDropSize = 2;
+var maxDropSize = 4;
 var snowColor = 255;
 
 //mountain variables
@@ -59,7 +59,7 @@ function setup() {
   noStroke();
 
   for(var i = 0; i < quantity; i++) {
-    flakeSize[i] = round(random(minFlakeSize, maxFlakeSize));
+    dropSize[i] = round(random(minDropSize, maxDropSize));
     xPosition[i] = random(0, width);
     yPosition[i] = random(0, height);
     direction[i] = round(random(0, 1));
@@ -144,28 +144,28 @@ function drawSnow() {
 	for(var i = 0; i < xPosition.length; i++) {
     noStroke();
     fill(c5);
-    //ellipse(xPosition[i], yPosition[i], flakeSize[i], flakeSize[i]);
+    //ellipse(xPosition[i], yPosition[i], dropSize[i], dropSize[i]);
     push();
     translate(xPosition[i],yPosition[i]);
     rotate(radians(rotation[i]));
     beginShape();
     vertex(0,0);
-    vertex(flakeSize[i],0);
-    vertex(flakeSize[i]/2,flakeSize[i]*0.86604);
+    vertex(dropSize[i],0);
+    vertex(dropSize[i]/2,dropSize[i]*0.86604);
     endShape(CLOSE);
     pop();
 
     if(direction[i] == 0) {
-      xPosition[i] += map(flakeSize[i], minFlakeSize, maxFlakeSize, .1, .7);
+      xPosition[i] += map(dropSize[i], minDropSize, maxDropSize, .1, .7);
     } else {
-      xPosition[i] -= map(flakeSize[i], minFlakeSize, maxFlakeSize, .1, .7);
+      xPosition[i] -= map(dropSize[i], minDropSize, maxDropSize, .1, .7);
     }
 
-    yPosition[i] += flakeSize[i] + direction[i]+5;
+    yPosition[i] += dropSize[i] + direction[i]+5;
 
-    if(xPosition[i] > width + flakeSize[i] || xPosition[i] < -flakeSize[i] || yPosition[i] > height + flakeSize[i]) {
+    if(xPosition[i] > width + dropSize[i] || xPosition[i] < -dropSize[i] || yPosition[i] > height + dropSize[i]) {
       xPosition[i] = random(0, width);
-      yPosition[i] = -flakeSize[i];
+      yPosition[i] = -dropSize[i];
     }
   }
 }
