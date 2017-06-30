@@ -135,12 +135,12 @@ function draw() {
   }
   //snow draw
 
-    drawSnow();
+    drawRain();
 
 
 }
 
-function drawSnow() {
+function drawRain() {
 	for(var i = 0; i < xPosition.length; i++) {
     noStroke();
     fill(c5);
