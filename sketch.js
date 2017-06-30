@@ -1,17 +1,22 @@
 //snow variables
 var snowQuantity = 400;
-var xPosition = [];
-var yPosition = [];
+var xPositionSnow = [];
+var yPositionSnow = [];
 var flakeSize = [];
-var direction = [];
-var rotation = [];
+var directionSnow = [];
+var rotationSnow = [];
 var minFlakeSize = 1;
 var maxFlakeSize = 7;
 var snowColor = 255;
 
 //rain variables
+
+var rainQuantity = 2300;
+var xPositionRain = [];
+var yPositionRain = [];
 var dropSize = [];
-var rainQuantity = 1000;
+var directionRain = [];
+var rotationRain = [];
 var minDropSize = 2;
 var maxDropSize = 4;
 var rainColor = 255;
@@ -89,19 +94,19 @@ function setup() {
 
   for(var i = 0; i < snowQuantity; i++) {
     flakeSize[i] = round(random(minFlakeSize, maxFlakeSize));
-    xPosition[i] = random(0, width);
-    yPosition[i] = random(0, height);
-    direction[i] = round(random(0, 1));
-     rotation[i] = random(0,360);
+    xPositionSnow[i] = random(0, width);
+    yPositionSnow[i] = random(0, height);
+    directionSnow[i] = round(random(0, 1));
+     rotationSnow[i] = random(0,360);
   }
 
   //rain setup
   for(var i = 0; i < rainQuantity; i++) {
     dropSize[i] = round(random(minDropSize, maxDropSize));
-    xPosition[i] = random(0, width);
-    yPosition[i] = random(0, height);
-    direction[i] = round(random(0, 1));
-    rotation[i] = 180;
+    xPositionRain[i] = random(0, width);
+    yPositionRain[i] = random(0, height);
+    directionRain[i] = round(random(0, 1)+0);
+    rotationRain[i] = 180;
 }
 
 
@@ -143,7 +148,7 @@ function draw() {
   c4 = color(farbton, 100, 72, 1);
   c5 = color(farbton, 60, 86, 1);
   c6 = color(farbton, 40, 100, 1);
-  c7 = color(farbton, 50, 90, 1);
+  c7 = color(farbton, 10, 90, 1);
 
   background(c7);
 
@@ -181,13 +186,13 @@ function draw() {
 }
 
 function drawSnow() {
-	for(var i = 0; i < xPosition.length; i++) {
+	for(var i = 0; i < xPositionSnow.length; i++) {
     noStroke();
     fill(255);
-    //ellipse(xPosition[i], yPosition[i], flakeSize[i], flakeSize[i]);
+    //ellipse(xPositionSnow[i], yPositionSnow[i], flakeSize[i], flakeSize[i]);
     push();
-    translate(xPosition[i],yPosition[i]);
-    rotate(radians(rotation[i]));
+    translate(xPositionSnow[i],yPositionSnow[i]);
+    rotate(radians(rotationSnow[i]));
     beginShape();
     vertex(0,0);
     vertex(flakeSize[i],0);
@@ -195,29 +200,29 @@ function drawSnow() {
     endShape(CLOSE);
     pop();
 
-    if(direction[i] == 0) {
-      xPosition[i] += map(flakeSize[i], minFlakeSize, maxFlakeSize, .1, .7);
+    if(directionSnow[i] == 0) {
+      xPositionSnow[i] += map(flakeSize[i], minFlakeSize, maxFlakeSize, .1, .7);
     } else {
-      xPosition[i] -= map(flakeSize[i], minFlakeSize, maxFlakeSize, .1, .7);
+      xPositionSnow[i] -= map(flakeSize[i], minFlakeSize, maxFlakeSize, .1, .7);
     }
 
-    yPosition[i] += flakeSize[i] + direction[i];
+    yPositionSnow[i] += flakeSize[i] + directionSnow[i];
 
-    if(xPosition[i] > width + flakeSize[i] || xPosition[i] < -flakeSize[i] || yPosition[i] > height + flakeSize[i]) {
-      xPosition[i] = random(0, width);
-      yPosition[i] = -flakeSize[i];
+    if(xPositionSnow[i] > width + flakeSize[i] || xPositionSnow[i] < -flakeSize[i] || yPositionSnow[i] > height + flakeSize[i]) {
+      xPositionSnow[i] = random(0, width);
+      yPositionSnow[i] = -flakeSize[i];
     }
   }
 }
 
 function drawRain() {
-  for(var i = 0; i < xPosition.length; i++) {
+  for(var i = 0; i < xPositionRain.length; i++) {
     noStroke();
     fill(c5);
-    //ellipse(xPosition[i], yPosition[i], dropSize[i], dropSize[i]);
+    //ellipse(xPositionRain[i], yPositionRain[i], dropSize[i], dropSize[i]);
     push();
-    translate(xPosition[i],yPosition[i]);
-    rotate(radians(rotation[i]));
+    translate(xPositionRain[i],yPositionRain[i]);
+    rotate(radians(rotationRain[i]));
     beginShape();
     vertex(0,0);
     vertex(dropSize[i],0);
@@ -225,17 +230,17 @@ function drawRain() {
     endShape(CLOSE);
     pop();
 
-    if(direction[i] == 0) {
-      xPosition[i] += map(dropSize[i], minDropSize, maxDropSize, .1, .7);
+    if(directionRain[i] == 0) {
+      xPositionRain[i] += map(dropSize[i], minDropSize, maxDropSize, .1, .7);
     } else {
-      xPosition[i] -= map(dropSize[i], minDropSize, maxDropSize, .1, .7);
+      xPositionRain[i] -= map(dropSize[i], minDropSize, maxDropSize, .1, .7);
     }
 
-    yPosition[i] += dropSize[i] + direction[i]+5;
+    yPositionRain[i] += dropSize[i] + directionRain[i]+5;
 
-    if(xPosition[i] > width + dropSize[i] || xPosition[i] < -dropSize[i] || yPosition[i] > height + dropSize[i]) {
-      xPosition[i] = random(0, width);
-      yPosition[i] = -dropSize[i];
+    if(xPositionRain[i] > width + dropSize[i] || xPositionRain[i] < -dropSize[i] || yPositionRain[i] > height + dropSize[i]) {
+      xPositionRain[i] = random(0, width);
+      yPositionRain[i] = -dropSize[i];
     }
   }
 }
