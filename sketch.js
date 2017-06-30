@@ -36,9 +36,17 @@ var c5 = {
 //hier kannst du die farben per triangle setzen
 var colors = [c3, c3, c2, c1, c1, c5, c3, c4, c4, c5, c3, c5, c1, c2, c3, c4, c5, c1, c3, c4, c5, c2, c5, c2, c4, c1, c2, c1, c2, c3, c1, c3, c3, c2, c1, c2, c1, c2, c2, c2, c1, c1, c2, c4, c1, c2, c2, c2, c1, c5, c2, c2, c1, c3, c2, c1, c3, c2, c1, c2, c2];
 
+var slider;
+
 function setup() {
   createCanvas(600, 400);
+  createP('');
+  slider = createSlider(180,360,196);
+  slider.position(235,370);
   background(255);
+
+
+
 
 
 
@@ -65,9 +73,10 @@ console.log(colors.length, triangles.length);
 
 
 function draw() {
-
+  var sliderValue = slider.value();
+  console.log(sliderValue);
   farbton = 196;
-  farbton = map(mouseX, 0, width, 0, 360);
+  farbton = sliderValue;
 
   c1 = color(farbton, 100, 20, 1);
   c2 = color(farbton, 100, 44, 1);
