@@ -1,5 +1,5 @@
 //snow variables
-var quantity   = 2000;
+var snowQuantity = 400
 var xPosition = [];
 var yPosition = [];
 var flakeSize = [];
@@ -81,7 +81,7 @@ function setup() {
   frameRate(25);
   noStroke();
 
-  for(var i = 0; i < quantity; i++) {
+  for(var i = 0; i < snowQuantity; i++) {
     flakeSize[i] = round(random(minFlakeSize, maxFlakeSize));
     xPosition[i] = random(0, width);
     yPosition[i] = random(0, height);
@@ -108,14 +108,15 @@ function setup() {
   c6 = color(farbton, 40, 100, 1);*/
 
 
-console.log(colors.length, triangles.length);
 
 }
 
 
 function draw() {
 
-
+  var sliderSnowValue = sliderSnow.value();
+  snowQuantity = sliderSnowValue;
+  console.log(sliderSnowValue);
 
 
 
@@ -160,9 +161,7 @@ function draw() {
   //snow draw
 
     drawSnow();
-    var sliderSnowValue = sliderSnow.value();
-    quantity = sliderSnowValue;
-    console.log(sliderSnowValue);
+
 
 }
 
