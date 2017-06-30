@@ -1,5 +1,5 @@
 //snow variables
-var quantity = 200;
+var quantity = 400;
 var xPosition = [];
 var yPosition = [];
 var flakeSize = [];
@@ -50,6 +50,10 @@ var c6 = {
   l: 100
 }
 
+//interface variables
+var sliderSnow;
+var sliderRain;
+var sliderCloud;
 
 
 //hier kannst du die farben per triangle setzen
@@ -61,6 +65,15 @@ var colorsKl = [c2, c1, c5, c2, c3, c4, c5, c4, c1, c5, c1, c2, c3, c1, c4, c3, 
 
 function setup() {
   createCanvas(600, 400);
+  createP('Schnee').position(40,400);
+  sliderSnow = createSlider(0,2000,0)
+  sliderSnow.position(0,440);
+  createP('Regen').position(285,400);
+  sliderRain = createSlider(0,100,50);
+  sliderRain.position(240,440);
+  createP('Wolken').position(510,400);
+  sliderCloud = createSlider(0,100,50);
+  sliderCloud.position(470,440);
   background(255);
 
 //snow setup
@@ -94,15 +107,12 @@ function setup() {
   c6 = color(farbton, 40, 100, 1);*/
 
 
-console.log(colors.length, triangles.length);
+
 
 }
 
 
 function draw() {
-
-
-
 
   farbton = 196;
   //farbton = map(mouseX, 0, width, 0, 360);
@@ -121,15 +131,15 @@ function draw() {
   noStroke();
 
   //den aktuellen farbton bei allen farben setzen
-  for (var i = 0; i < colorsGo.length; i++) {
-    colorsGo[i].h = farbton;
+  for (var i = 0; i < colors.length; i++) {
+    colors[i].h = farbton;
   }
 
 
-  for (var i = 0; i < trianglesGo.length; i++) {
-    var t = trianglesGo[i];
+  for (var i = 0; i < triangles.length; i++) {
+    var t = triangles[i];
     //var c = t[3];
-    var c = colorsGo[i];
+    var c = colors[i];
 
     var currColor = color(c.h, c.s, c.l, 1);
     //stroke(0);
@@ -143,7 +153,9 @@ function draw() {
     endShape();
   }
   //snow draw
-
+    var sliderSnowValue = sliderSnow.value();
+    quantity = sliderSnowValue;
+    console.log(sliderSnowValue);
     drawSnow();
 
 
