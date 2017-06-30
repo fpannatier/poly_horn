@@ -7,7 +7,7 @@ var direction = [];
 var rotation = [];
 var minDropSize = 2;
 var maxDropSize = 4;
-var snowColor = 255;
+var rainColor = 255;
 
 //mountain variables
 
