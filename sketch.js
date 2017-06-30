@@ -1,5 +1,5 @@
 //snow variables
-var quantity = 1000;
+var rainQuantity = 1000;
 var xPosition = [];
 var yPosition = [];
 var dropSize = [];
@@ -58,7 +58,7 @@ function setup() {
   frameRate(25);
   noStroke();
 
-  for(var i = 0; i < quantity; i++) {
+  for(var i = 0; i < rainQuantity; i++) {
     dropSize[i] = round(random(minDropSize, maxDropSize));
     xPosition[i] = random(0, width);
     yPosition[i] = random(0, height);
