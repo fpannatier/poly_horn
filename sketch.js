@@ -1,5 +1,5 @@
 //snow variables
-var quantity = 400;
+var quantity   = 2000;
 var xPosition = [];
 var yPosition = [];
 var flakeSize = [];
@@ -37,6 +37,7 @@ var c4 =  {
   s: 60,
   l: 86
 };
+
 
 var c5 = {
   h: farbton,
@@ -85,7 +86,7 @@ function setup() {
     xPosition[i] = random(0, width);
     yPosition[i] = random(0, height);
     direction[i] = round(random(0, 1));
-    rotation[i] = random(0,360);
+     rotation[i] = random(0,360);
 
   }
 
@@ -107,15 +108,19 @@ function setup() {
   c6 = color(farbton, 40, 100, 1);*/
 
 
-
+console.log(colors.length, triangles.length);
 
 }
 
 
 function draw() {
 
+
+
+
+
   farbton = 196;
-  //farbton = map(mouseX, 0, width, 0, 360);
+//  farbton = map(mouseX, 0, width, 0, 360);
 
   c1 = color(farbton, 100, 20, 1);
   c2 = color(farbton, 100, 44, 1);
@@ -125,7 +130,7 @@ function draw() {
   c6 = color(farbton, 40, 100, 1);
   c7 = color(farbton, 50, 90, 1);
 
-    background(c7);
+  background(c7);
 
 
   noStroke();
@@ -153,11 +158,11 @@ function draw() {
     endShape();
   }
   //snow draw
+
+    drawSnow();
     var sliderSnowValue = sliderSnow.value();
     quantity = sliderSnowValue;
     console.log(sliderSnowValue);
-    drawSnow();
-
 
 }
 
