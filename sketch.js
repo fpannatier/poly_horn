@@ -1,13 +1,3 @@
-//snow variables
-var quantity = 200;
-var xPosition = [];
-var yPosition = [];
-var flakeSize = [];
-var direction = [];
-var rotation = [];
-var minFlakeSize = 1;
-var maxFlakeSize = 7;
-var snowColor = 255;
 var buttonVi;
 var buttonRo;
 var buttonGo;
@@ -59,9 +49,9 @@ var c6 = {
 
 //hier kannst du die farben per triangle setzen
 var colorsVi = [c3, c3, c2, c1, c1, c5, c3, c4, c4, c5, c3, c5, c1, c2, c3, c4, c5, c1, c3, c4, c5, c2, c5, c2, c4, c1, c2, c1, c2, c3, c1, c3, c3, c2, c1, c2, c1, c2, c2, c2, c1, c1, c2, c4, c1, c2, c2, c2, c1, c5, c2, c2, c1, c3, c2, c1, c3, c2, c1, c2, c2];
-var colorsRo = [c2, c1, c3, c5, c3, c4, c5, c2, c2, c4, c3, c2, c4, c1, c2, c4, c5, c1, c2, c1, c2, c1, c5, c2, c1, c2, c2, c4, c3, c5, c1, c5, c4, c3, c5, c3, c4, c1, c1, c4, c3, c2, c4, c4, c4, c1, c2, c5, c4, c5, c4, c5, c4, c1, c2, c3, c1, c2, c3, c4, c3, c2, c1, c2];
+var colorsRo = [c2, c1, c3, c5, c3, c4, c5, c2, c2, c4, c3, c2, c4, c1, c2, c4, c5, c1, c2, c1, c2, c1, c5, c2, c1, c2, c2, c4, c3, c5, c1, c5, c4, c3, c5, c3, c4, c1, c1, c4, c3, c2, c4, c4, c4, c1, c2, c5, c4, c5, c4, c5, c4, c1, c2, c3, c1, c2, c2, c3, c4, c3, c2, c1, c2,c5];
 var colorsGo = [c1, c2, c3, c2, c1, c3, c3, c3, c2, c4, c3, c5, c1, c2, c1, c5, c4, c5, c4, c4, c3, c3, c4, c5, c3, c2, c1, c5, c4, c5, c3, c4, c5, c4, c5, c4, c2, c1, c4, c2, c1, c2, c5, c1, c2, c1, c4, c3, c3, c4, c4, c5, c4, c3, c5, c1, c5, c2, c2, c1, c3, c5, c4, c2, c2, c4, c5, c4, c1, c2, c4, c3, c4, c2, c3, c1, c1, c1, c2, c3, c2, c3, c5, c4, c3, c5, c2, c2, c1, c2, c1, c2];
-var colorsKl = [c2, c1, c5, c2, c3, c4, c5, c4, c1, c5, c1, c2, c3, c1, c4, c3, c1, c2, c3, c2, c1, c3, c2, c1, c3, c3, c2, c5, c3, c1, c2, c2, c2, c2, c1, c2, c3, c1, c5, c4, c3, c4, c5, c2, c3, c2, c3, c3, c3, c2, c1, c2, c3, c1, c2, c3, c1, c3, c5, c5, c1, c2, c3, c3, c4, c5, c4, c3, c5, c3, c4, c5];
+var colorsKl = [c2, c1, c5, c2, c3, c4, c5, c4, c1, c5, c1, c2, c3, c1, c4, c3, c1, c2, c3, c2, c1, c3, c2, c1, c3, c3, c2, c5, c3, c1, c2, c2, c2, c2, c1, c2, c3, c1, c5, c4, c3, c4, c5, c2, c3, c2, c3, c3, c3, c2, c1, c2, c3, c1, c2, c3, c1, c3, c5, c5, c1, c2, c3, c3, c4, c4, c5, c4, c3, c5, c3, c4,c5];
 
 var ro = {
   triangles: trianglesRo,
@@ -90,28 +80,37 @@ var perspIndex = 0;
 
 function setup() {
   createCanvas(600, 400);
+  textFont('Arial');
+  var hulu = createP('Perspektive wählen:');
+  hulu.position(56+25,340);
   background(255);
   buttonVi = createButton('Zermatt');
+  buttonVi.position(195+25,356);
   buttonRo = createButton('Rothorn');
+  buttonRo.position(255+25,356);
   buttonGo = createButton('Gornergrat');
+  buttonGo.position(315+25,356);
   buttonKl = createButton('Klein Matterhorn');
-/*  buttonVi.mousePressed(zermatt);
+  buttonKl.position(391+25,356);
+  buttonVi.mousePressed(village);
   buttonRo.mousePressed(rothorn);
   buttonGo.mousePressed(gornergrat);
-  buttonKl.mousePressed(klMatterhorn) */
+  buttonKl.mousePressed(klMatterhorn);
 
-//snow setup
-  frameRate(25);
-  noStroke();
-
-  for(var i = 0; i < quantity; i++) {
-    flakeSize[i] = round(random(minFlakeSize, maxFlakeSize));
-    xPosition[i] = random(0, width);
-    yPosition[i] = random(0, height);
-    direction[i] = round(random(0, 1));
-    rotation[i] = random(0,360);
-
+  function village() {
+    perspIndex = 0;
   }
+  function rothorn() {
+    perspIndex = 1;
+  }
+  function gornergrat() {
+    perspIndex = 2;
+  }
+  function klMatterhorn() {
+    perspIndex = 3;
+  }
+
+
 
 
 
@@ -137,6 +136,7 @@ function setup() {
 
 
 function draw() {
+  background(255);
 
 
 
@@ -152,7 +152,7 @@ function draw() {
   c6 = color(farbton, 40, 100, 1);
   c7 = color(farbton, 50, 90, 1);
 
-    background(c7);
+
 
 
   noStroke();
@@ -183,39 +183,7 @@ function draw() {
     vertex(t[2].x, t[2].y);
     endShape();
   }
-  //snow draw
-
-    drawSnow();
 
 
-}
 
-function drawSnow() {
-	for(var i = 0; i < xPosition.length; i++) {
-    noStroke();
-    fill(255);
-    //ellipse(xPosition[i], yPosition[i], flakeSize[i], flakeSize[i]);
-    push();
-    translate(xPosition[i],yPosition[i]);
-    rotate(radians(rotation[i]));
-    beginShape();
-    vertex(0,0);
-    vertex(flakeSize[i],0);
-    vertex(flakeSize[i]/2,flakeSize[i]*0.86604);
-    endShape(CLOSE);
-    pop();
-
-    if(direction[i] == 0) {
-      xPosition[i] += map(flakeSize[i], minFlakeSize, maxFlakeSize, .1, .7);
-    } else {
-      xPosition[i] -= map(flakeSize[i], minFlakeSize, maxFlakeSize, .1, .7);
-    }
-
-    yPosition[i] += flakeSize[i] + direction[i];
-
-    if(xPosition[i] > width + flakeSize[i] || xPosition[i] < -flakeSize[i] || yPosition[i] > height + flakeSize[i]) {
-      xPosition[i] = random(0, width);
-      yPosition[i] = -flakeSize[i];
-    }
-  }
 }
