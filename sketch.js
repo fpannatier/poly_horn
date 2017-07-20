@@ -1,4 +1,5 @@
 //snow variables
+var snowQuan;
 var snowQuantity = 400;
 var xPositionSnow = [];
 var yPositionSnow = [];
@@ -9,8 +10,10 @@ var minFlakeSize = 1;
 var maxFlakeSize = 7;
 var snowColor = 255;
 
-//rain variables
 
+//rain variables
+//var regen = sliderRain.value;
+var rainQuan;
 var rainQuantity = 2300;
 var xPositionRain = [];
 var yPositionRain = [];
@@ -81,7 +84,7 @@ function setup() {
   sliderSnow = createSlider(0,2000,0)
   sliderSnow.position(0,440);
   createP('Regen').position(285,400);
-  sliderRain = createSlider(0,100,50);
+  sliderRain = createSlider(0,5000,0);
   sliderRain.position(240,440);
   createP('Wolken').position(510,400);
   sliderCloud = createSlider(0,100,50);
@@ -133,9 +136,12 @@ function setup() {
 
 function draw() {
 
-  var sliderSnowValue = sliderSnow.value();
-  snowQuantity = sliderSnowValue;
-  console.log(sliderSnowValue);
+  snowQuan = sliderSnow.value();
+  snowQuantity = snowQuan;
+
+  rainQuan = sliderRain.value();
+  rainQuantity = rainQuan;
+
 
 
 
