@@ -10,7 +10,6 @@ var minFlakeSize = 1;
 var maxFlakeSize = 7;
 var snowColor = 255;
 
-
 //rain variables
 //var regen = sliderRain.value;
 var rainQuan;
@@ -23,8 +22,8 @@ var rotationRain = [];
 var minDropSize = 2;
 var maxDropSize = 4;
 var rainColor = 255;
-//mountain variables
 
+//mountain variables
 var farbton = 196;
 //h = hue, s = saturation, l = brightness
 
@@ -77,6 +76,17 @@ var colorsRo = [c2, c1, c3, c5, c3, c4, c5, c2, c2, c4, c3, c2, c4, c1, c2, c4, 
 var colorsGo = [c1, c2, c3, c2, c1, c3, c3, c3, c2, c4, c3, c5, c1, c2, c1, c5, c4, c5, c4, c4, c3, c3, c4, c5, c3, c2, c1, c5, c4, c5, c3, c4, c5, c4, c5, c4, c2, c1, c4, c2, c1, c2, c5, c1, c2, c1, c4, c3, c3, c4, c4, c5, c4, c3, c5, c1, c5, c2, c2, c1, c3, c5, c4, c2, c2, c4, c5, c4, c1, c2, c4, c3, c4, c2, c3, c1, c1, c1, c2, c3, c2, c3, c5, c4, c3, c5, c2, c2, c1, c2, c1, c2];
 var colorsKl = [c2, c1, c5, c2, c3, c4, c5, c4, c1, c5, c1, c2, c3, c1, c4, c3, c1, c2, c3, c2, c1, c3, c2, c1, c3, c3, c2, c5, c3, c1, c2, c2, c2, c2, c1, c2, c3, c1, c5, c4, c3, c4, c5, c2, c3, c2, c3, c3, c3, c2, c1, c2, c3, c1, c2, c3, c1, c3, c5, c5, c1, c2, c3, c3, c4, c5, c4, c3, c5, c3, c4, c5];
 
+//cloud variables
+var xPosition = -200;
+var angle = 0.0;
+var offset = 100;
+var scalar = 5;
+var velo = 0.01;
+
+//an array to store multiple clouds
+var clouds = [];
+var nClounds = 20;
+
 
 function setup() {
     createCanvas(600, 400);
@@ -87,8 +97,8 @@ function setup() {
     sliderRain = createSlider(0, rainQuantity, 0);
     sliderRain.position(240, 440);
     createP('Wolken').position(510, 400);
-    sliderCloud = createSlider(0, 100, 50);
-    sliderCloud.position(470, 440);
+    cloudSlider = createSlider(0, 25, 0);
+    cloudSlider.position(470, 440);
     background(255);
 
     //snow setup
@@ -127,6 +137,40 @@ function setup() {
     c5 = color(farbton, 60, 86, 1);
     c6 = color(farbton, 40, 100, 1);*/
 
+    //cloud setup
+    //create the clouds based on the points in points.js
+
+    for(var i=0; i<nClounds; i++){
+      //create a cloud object
+      var cloud = {
+        x: random(0,width), //0
+        y: random(0,height),
+        scale: random(0.2,1),
+        speed: random(0.2,1),
+        points: copyPointArray(points),
+        cloudTriangles: cloudTriangles
+      };
+
+      var rand = 5;
+      //slightly change the points so that cloud gets individual shape
+      for(var j=0; j<cloud.points.length; j++){
+        var p = cloud.points[j];
+        p.x += random(-rand,rand);
+        p.y += random(-rand,rand);
+      }
+
+      //print('cloud.points');
+      //print(cloud.points);
+      //print('cloud.cloudTriangles');
+      //print(cloud.cloudTriangles);
+
+      clouds.push(cloud);
+    }
+/*
+    //Create a slider to adjust the clouds
+    cloudSlider = createSlider(0,nClounds,10);
+    cloudSlider.position(0,440);*/
+
 }
 
 
@@ -154,6 +198,7 @@ function draw() {
     c7 = color(farbton, 10, 90, 1);
 
     background(c7);
+
 
 
     noStroke();
@@ -185,6 +230,62 @@ function draw() {
 
     //rain draw
     drawRain(rainQuan);
+
+    //cloud draw
+    //move the clounds
+    for(var i=0; i<clouds.length; i++){
+      var c = clouds[i];
+      c.x += c.speed;
+
+      //if the clouds goes out of the canvas on the right side
+      //reset the position on the left side, so that the clouds go in a loop
+      if(c.x>width){
+        c.x = -200;
+      }
+    }
+
+
+    //only display the number of clouds defined by the slider
+    //and make sure we dont access indices which are larger that the cloud array
+    var n = min(cloudSlider.value(),clouds.length);
+
+    //draw the clouds
+    for(var i=0; i<n; i++){
+      var cloud = clouds[i];
+      push();
+      translate(cloud.x,cloud.y);
+      scale(cloud.scale);
+      var pts = cloud.points;
+      var tris = cloud.cloudTriangles;
+      for(var j=0; j<tris.length; j++){
+
+       // print('triangles j: ' + j);
+        var t = tris[j];
+
+        var p1 = pts[t[0]];
+        var p2 = pts[t[1]];
+        var p3 = pts[t[2]];
+        colorMode(RGB);
+        stroke('white');
+        strokeWeight(0.1);
+        fill(255,255,255,170);
+        beginShape(TRIANGLES);
+        vertex(p1.x,p1.y);
+        vertex(p2.x,p2.y);
+        vertex(p3.x,p3.y);
+        endShape();
+      }
+
+  /*    for(var j=0; j<pts.length; j++){
+        var p = pts[j];
+        ellipse(p.x,p.y,3,3);
+      }
+  */
+      pop();
+    }
+
+
+
 
 }
 
@@ -259,4 +360,20 @@ function drawRain(quantity) {
             yPositionRain[i] = -dropSize[i];
         }
     }
+}
+//makes a deep copy of a list of points
+function copyPointArray(pts){
+  var newArr = [];
+  for(var i=0; i<pts.length; i++){
+    var p = copyPoint(pts[i]);
+    newArr.push(p);
+  }
+  return newArr;
+}
+
+function copyPoint(p){
+  return {
+    x: p.x,
+    y: p.y
+  };
 }
