@@ -91,7 +91,7 @@ y:29
 //here I took point indices instead of the actual points,
 //which then can be used to get the corresponding point
 //from the points array.
-var triangles = [
+var cloudTriangles = [
   [0,1,27],
   [1,2,27],
   [2,3,27],
